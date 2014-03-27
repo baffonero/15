@@ -145,7 +145,7 @@ HTMLActuator.prototype.timeTweetButton = function () {
   var tweet = document.createElement("a");
   tweet.classList.add("twitter-share-button");
   tweet.setAttribute("href", "https://twitter.com/share");
-  tweet.setAttribute("data-via", "f4biod");
+  tweet.setAttribute("data-via", "baff0ner0");
   tweet.setAttribute("data-url", "http://baffonero.github.io/15/");
   tweet.setAttribute("data-counturl", "http://baffonero.github.io/15/");
   tweet.textContent = "Tweet";
