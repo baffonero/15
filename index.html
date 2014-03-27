@@ -17,20 +17,20 @@
   <meta property="og:title" content="15 Puzzle"/>
   <meta property="og:site_name" content="15 Puzzle"/>
   <meta property="og:description" content="Solve it"/>
-  <meta property="og:image" content="http://gabrielecirulli.github.io/2048/meta/og_image.png"/>
+  <meta property="og:image" content="http://baffonero.github.io/15/meta/og_image.png"/>
 </head>
 <body>
   <div class="container">
     <div class="heading">
       <h1 class="title">15 Puzzle</h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
+      <div class="times-container">
+        <div class="time-container">0</div>
         <div class="best-container">0</div>
       </div>
     </div>
 
     <div class="above-game">
-      <p class="game-intro">Salva le tue ore di sonno!</strong></p>
+      <p class="game-intro">Sort the tiles!</strong></p>
       <a class="restart-button">New Game</a>
     </div>
 
@@ -38,24 +38,8 @@
       <div class="game-message">
         <p></p>
         <div class="lower">
-	        <a class="keep-playing-button">Keep going</a>
           <a class="retry-button">Try again</a>
-          <div class="score-sharing"></div>
-          <div class="mailing-list">
-            <!-- MailChimp Signup Form -->
-            <form action="http://gabrielecirulli.us8.list-manage.com/subscribe/post?u=991201206817cfb4e4247ed6c&amp;id=7928ea817b" method="post" name="mc-embedded-subscribe-form" class="mailing-list-form" target="_blank">
-              <strong>Get email updates from Gabriele</strong>
-
-              <input type="email" value="" name="EMAIL" class="mailing-list-email-field" placeholder="Your email address" spellcheck="false">
-
-              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-              <div style="position: absolute; left: -9999px;">
-                <input type="text" name="b_991201206817cfb4e4247ed6c_7928ea817b" value="">
-              </div>
-
-              <input type="submit" value="Go" name="subscribe" class="mailing-list-subscribe-button">
-            </form>
-          </div>
+          <div class="time-sharing"></div>
         </div>
       </div>
 
@@ -92,18 +76,18 @@
     </div>
 
     <p class="game-explanation">
-      <strong class="important">How to play:</strong> Movi e <strong>frecce</strong>
+      <strong class="important">How to play:</strong> Classic 15 Puzzle (Game of Fifteen). Use the <strong>arrows</strong> to set tiles in the right order.
     </p>
     <hr>
     <p>
-    <strong class="important">Note:</strong> Questa è una versione semplificata di 2048 per risparmiare tempo e bestemmie.
+    <strong class="important">Credits:</strong> Created by <a href="https://twitter.com/baff0ner0" target="_blank">Baffonero</a> and heavily based on the great <a href="http://gabrielecirulli.github.io/2048/" target="_blank">Gabriele Cirulli's 2048</a>.
+    </p>
+    <p>
+    
     </p>
     <hr>
-    <p>
-    <a href="http://gabrielecirulli.github.io/2048/" target="_blank">Qui </a> l'originale di <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> 
-    </p>
     <div class="sharing">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="2048 For Dummies - Salva le ore di sonno! #2048game" data-via="f4biod" data-url="http://baffonero.github.io/2048/" data-counturl="http://baffonero.github.io/2048/">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="15 Puzzle - Sort The Tiles! #15puzzle" data-via="baff0ner0" data-url="http://baffonero.github.io/15/" data-counturl="http://baffonero.github.io/15/">Tweet</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     </div>
@@ -121,13 +105,14 @@
   <script src="js/application.js"></script>
 
   <script>
-    (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga("create", "UA-42620757-2", "gabrielecirulli.github.io");
-    ga("send", "pageview");
+    ga('create', 'UA-44935509-2', 'baffonero.github.io');
+    ga('send', 'pageview');
+
   </script>
 </body>
 </html>

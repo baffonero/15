@@ -48,7 +48,7 @@ input {
   clear: both; }
 
 h1.title {
-  font-size: 25px;
+  font-size: 65px;
   font-weight: bold;
   margin: 0;
   display: block;
@@ -78,11 +78,11 @@ h1.title {
   100% {
     top: -50px;
     opacity: 0; } }
-.scores-container {
+.times-container {
   float: right;
   text-align: right; }
 
-.score-container, .best-container {
+.time-container, .best-container {
   position: relative;
   display: inline-block;
   background: #bbada0;
@@ -95,7 +95,7 @@ h1.title {
   color: white;
   margin-bottom: 8px;
   text-align: center; }
-  .score-container:after, .best-container:after {
+  .time-container:after, .best-container:after {
     position: absolute;
     width: 100%;
     top: 10px;
@@ -105,7 +105,7 @@ h1.title {
     line-height: 13px;
     text-align: center;
     color: #eee4da; }
-  .score-container .score-addition, .best-container .score-addition {
+  .time-container .time-addition, .best-container .time-addition {
     position: absolute;
     right: 30px;
     color: red;
@@ -121,8 +121,8 @@ h1.title {
     -moz-animation-fill-mode: both;
     animation-fill-mode: both; }
 
-.score-container:after {
-  content: "Score"; }
+.time-container:after {
+  content: "Time"; }
 
 .best-container:after {
   content: "Best"; }
@@ -254,7 +254,7 @@ hr {
     margin-left: 9px; }
     .game-message a.keep-playing-button {
       display: none; }
-  .game-message .score-sharing {
+  .game-message .time-sharing {
     display: inline-block;
     vertical-align: middle;
     margin-left: 10px; }
@@ -391,16 +391,19 @@ hr {
     font-weight: bold;
     z-index: 10;
     font-size: 55px; }
+  .tile.tile-1 .tile-inner {
+    background: black;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0); }    
   .tile.tile-2 .tile-inner {
     background: #eee4da;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0); }
   .tile.tile-4 .tile-inner {
     background: #ede0c8;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0); }
-  .tile.tile-8 .tile-inner {
+  .tile.tile-placed-true .tile-inner {
     color: #f9f6f2;
     background: #f2b179; }
-  .tile.tile-16 .tile-inner {
+/*  .tile.tile-16 .tile-inner {
     color: #f9f6f2;
     background: #f59563; }
   .tile.tile-32 .tile-inner {
@@ -455,7 +458,7 @@ hr {
     font-size: 30px; }
     @media screen and (max-width: 520px) {
       .tile.tile-super .tile-inner {
-        font-size: 10px; } }
+        font-size: 10px; } }*/
 
 @-webkit-keyframes appear {
   0% {
@@ -563,6 +566,7 @@ hr {
 
 .game-intro {
   float: left;
+  font-size: 35px;
   line-height: 42px;
   margin-bottom: 0; }
 
@@ -599,14 +603,14 @@ hr {
     padding: 0 20px; }
 
   h1.title {
-    font-size: 25px;
+    font-size: 65px;
     margin-top: 15px; }
 
   .container {
     width: 280px;
     margin: 0 auto; }
 
-  .score-container, .best-container {
+  .time-container, .best-container {
     margin-top: 0;
     margin-bottom: 15;
     padding: 15px 10px;
@@ -616,7 +620,7 @@ hr {
     margin-bottom: 10px; }
 
   .game-intro {
-    width: 55%;
+    width: 100%;
     display: block;
     box-sizing: border-box;
     line-height: 1.65; }
@@ -695,7 +699,7 @@ hr {
       margin-left: 9px; }
       .game-message a.keep-playing-button {
         display: none; }
-    .game-message .score-sharing {
+    .game-message .time-sharing {
       display: inline-block;
       vertical-align: middle;
       margin-left: 10px; }
@@ -830,7 +834,7 @@ hr {
       margin-bottom: 0 !important; }
     .game-message .lower {
       margin-top: 10px !important; }
-    .game-message.game-won .score-sharing {
+    .game-message.game-won .time-sharing {
       margin-top: 10px; }
     .game-message.game-over .mailing-list {
       margin-top: 25px; }

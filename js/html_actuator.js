@@ -1,11 +1,11 @@
 function HTMLActuator() {
   this.tileContainer    = document.querySelector(".tile-container");
-  this.scoreContainer   = document.querySelector(".score-container");
+  this.timeContainer    = document.querySelector(".time-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
-  this.sharingContainer = document.querySelector(".score-sharing");
+  this.sharingContainer = document.querySelector(".time-sharing");
 
-  this.score = 0;
+  this.time = 0;
 }
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
@@ -22,8 +22,8 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
       });
     });
 
-    self.updateScore(metadata.score);
-    self.updateBestScore(metadata.bestScore);
+    self.updateTime(metadata.time);
+    self.updateBestTime(metadata.bestTime);
 
     if (metadata.terminated) {
       if (metadata.over) {
@@ -60,9 +60,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   var positionClass = this.positionClass(position);
 
   // We can't use classlist because it somehow glitches when replacing classes
-  var classes = ["tile", "tile-" + tile.value, positionClass];
-
-  if (tile.value > 2048) classes.push("tile-super");
+  var classes = ["tile", "tile-placed-" + tile.placed.toString(), positionClass];
 
   this.applyClasses(wrapper, classes);
 
@@ -74,14 +72,6 @@ HTMLActuator.prototype.addTile = function (tile) {
     window.requestAnimationFrame(function () {
       classes[2] = self.positionClass({ x: tile.x, y: tile.y });
       self.applyClasses(wrapper, classes); // Update the position
-    });
-  } else if (tile.mergedFrom) {
-    classes.push("tile-merged");
-    this.applyClasses(wrapper, classes);
-
-    // Render the tiles that merged
-    tile.mergedFrom.forEach(function (merged) {
-      self.addTile(merged);
     });
   } else {
     classes.push("tile-new");
@@ -108,25 +98,25 @@ HTMLActuator.prototype.positionClass = function (position) {
   return "tile-position-" + position.x + "-" + position.y;
 };
 
-HTMLActuator.prototype.updateScore = function (score) {
-  this.clearContainer(this.scoreContainer);
+HTMLActuator.prototype.updateTime = function (time) {
+  this.clearContainer(this.timeContainer);
 
-  var difference = score - this.score;
-  this.score = score;
+  var difference = time - this.time;
+  this.time = time;
 
-  this.scoreContainer.textContent = this.score;
+  this.timeContainer.textContent = this.time;
 
-  if (difference > 0) {
+  /*if (difference > 0) {
     var addition = document.createElement("div");
-    addition.classList.add("score-addition");
+    addition.classList.add("time-addition");
     addition.textContent = "+" + difference;
 
-    this.scoreContainer.appendChild(addition);
-  }
+    this.timeContainer.appendChild(addition);
+  }*/
 };
 
-HTMLActuator.prototype.updateBestScore = function (bestScore) {
-  this.bestContainer.textContent = bestScore;
+HTMLActuator.prototype.updateBestTime = function (bestTime) {
+  this.bestContainer.textContent = bestTime;
 };
 
 HTMLActuator.prototype.message = function (won) {
@@ -134,14 +124,14 @@ HTMLActuator.prototype.message = function (won) {
   var message = won ? "You win!" : "Game over!";
 
   if (typeof ga !== "undefined") {
-    ga("send", "event", "game", "end", type, this.score);
+    ga("send", "event", "game", "end", type, this.time);
   }
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 
   this.clearContainer(this.sharingContainer);
-  this.sharingContainer.appendChild(this.scoreTweetButton());
+  this.sharingContainer.appendChild(this.timeTweetButton());
   twttr.widgets.load();
 };
 
@@ -151,16 +141,16 @@ HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-over");
 };
 
-HTMLActuator.prototype.scoreTweetButton = function () {
+HTMLActuator.prototype.timeTweetButton = function () {
   var tweet = document.createElement("a");
   tweet.classList.add("twitter-share-button");
   tweet.setAttribute("href", "https://twitter.com/share");
   tweet.setAttribute("data-via", "f4biod");
-  tweet.setAttribute("data-url", "http://baffonero.github.io/2048/");
-  tweet.setAttribute("data-counturl", "http://baffonero.github.io/2048/");
+  tweet.setAttribute("data-url", "http://baffonero.github.io/15/");
+  tweet.setAttribute("data-counturl", "http://baffonero.github.io/15/");
   tweet.textContent = "Tweet";
 
-  var text = "Ho fatto " + this.score + " punti a 2048 for dummies #2048game";
+  var text = "I solved #15puzzle in " + this.time + " seconds";
   tweet.setAttribute("data-text", text);
 
   return tweet;

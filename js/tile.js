@@ -2,9 +2,9 @@ function Tile(position, value) {
   this.x                = position.x;
   this.y                = position.y;
   this.value            = value;
+  this.placed           = false;
 
   this.previousPosition = null;
-  this.mergedFrom       = null; // Tracks tiles that merged together
 }
 
 Tile.prototype.savePosition = function () {

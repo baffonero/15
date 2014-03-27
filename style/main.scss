@@ -109,12 +109,12 @@ h1.title {
   }
 }
 
-.scores-container {
+.times-container {
   float: right;
   text-align: right;
 }
 
-.score-container, .best-container {
+.time-container, .best-container {
   $height: 25px;
 
   position: relative;
@@ -142,7 +142,7 @@ h1.title {
     color: $tile-color;
   }
 
-  .score-addition {
+  .time-addition {
     position: absolute;
     right: 30px;
     color: red;
@@ -156,8 +156,8 @@ h1.title {
   }
 }
 
-.score-container:after {
-  content: "Score";
+.time-container:after {
+  content: "Time";
 }
 
 .best-container:after {
@@ -298,7 +298,7 @@ hr {
       }
     }
 
-    .score-sharing {
+    .time-sharing {
       display: inline-block;
       vertical-align: middle;
       margin-left: 10px;
@@ -592,7 +592,7 @@ hr {
     margin: 0 auto;
   }
 
-  .score-container, .best-container {
+  .time-container, .best-container {
     margin-top: 0;
     padding: 15px 10px;
     min-width: 40px;
@@ -641,7 +641,7 @@ hr {
       margin-top: 10px !important;
     }
 
-    &.game-won .score-sharing {
+    &.game-won .time-sharing {
       margin-top: 10px;
     }
 

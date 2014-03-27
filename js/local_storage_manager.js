@@ -19,7 +19,7 @@ window.fakeStorage = {
 };
 
 function LocalStorageManager() {
-  this.bestScoreKey     = "bestScore";
+  this.bestTimeKey     = "bestTime";
   this.gameStateKey     = "gameState";
 
   var supported = this.localStorageSupported();
@@ -39,13 +39,13 @@ LocalStorageManager.prototype.localStorageSupported = function () {
   }
 };
 
-// Best score getters/setters
-LocalStorageManager.prototype.getBestScore = function () {
-  return this.storage.getItem(this.bestScoreKey) || 0;
+// Best time getters/setters
+LocalStorageManager.prototype.getBestTime = function () {
+  return this.storage.getItem(this.bestTimeKey)||999;
 };
 
-LocalStorageManager.prototype.setBestScore = function (score) {
-  this.storage.setItem(this.bestScoreKey, score);
+LocalStorageManager.prototype.setBestTime = function (time) {
+  this.storage.setItem(this.bestTimeKey, time);
 };
 
 // Game state getters/setters and clearing
