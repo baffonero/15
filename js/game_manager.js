@@ -45,14 +45,13 @@ GameManager.prototype.setup = function () {
     this.tilesToGo   = previousState.tilesToGo;
     this.won         = previousState.won;
   } else {
-    this.grid        = new Grid(this.size);
     this.time       = 0;
     this.tilesToGo   = this.startTiles;
     this.over        = false;
     this.won         = false;
 
     // Add the initial tiles
-    this.addStartTiles();
+    this.setupGrid();
   }
   
   // Update the actuator
@@ -61,21 +60,25 @@ GameManager.prototype.setup = function () {
   this.startTimer();
 };
 
+GameManager.prototype.setupGrid = function () {
+  do
+    {
+      this.grid        = new Grid(this.size);
+      this.addStartTiles();
+    }
+  while (!this.isSolvable()); 
+};
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
   for (var i = 1; i <= this.startTiles; i++) {
-     this.addStartTile(i);
+    if (this.grid.cellsAvailable()) {
+      var tile = new Tile(this.grid.randomAvailableCell(), i);
+
+      this.grid.insertTile(tile);
+    }    
   }
 };
-
-// Adds a tile in a random position
-GameManager.prototype.addStartTile = function (value) {
-  if (this.grid.cellsAvailable()) {
-    var tile = new Tile(this.grid.randomAvailableCell(), value);
-
-    this.grid.insertTile(tile);
-  }
-};
+ 
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
@@ -150,7 +153,6 @@ GameManager.prototype.move = function (direction) {
     moved = true; 
 
     var solved = this.checkSolved();
-    console.log("solved", solved, this.tilesToGo); 
 
     if (solved === true) {
       this.won = true;
@@ -175,7 +177,7 @@ GameManager.prototype.checkSolved = function () {
       }
     }
   });
-  
+
   that.tilesToGo = vTilesToGo;
 
   if (that.tilesToGo > 0) {
@@ -184,6 +186,29 @@ GameManager.prototype.checkSolved = function () {
     return (true);       
   }
 
+};
+GameManager.prototype.isSolvable = function () {
+  var that = this;
+  var tiles = this.grid.allCells();
+  var totInv = 0;
+  var partInv;
+  for (var i = 0; i < tiles.length - 1; i++) {
+    if (tiles[i] > 1) {
+      partInv = 0;  
+      for (var n = i + 1; n < tiles.length; n++) {
+        if (tiles[n] < tiles[i]) {
+          totInv += 1;
+        }  
+      }  
+    }
+  }
+  
+  if (totInv%2 === 0) {
+    return (true);
+  } else {
+    return (false);
+  }
+  
 };
 
 // Build a list of positions to traverse in the right order
