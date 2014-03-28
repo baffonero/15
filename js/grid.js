@@ -35,19 +35,19 @@ Grid.prototype.fromState = function (state) {
 
 // Find the first available random position
 Grid.prototype.randomAvailableCell = function () {
-  var cells = this.availableCells();
+  var cells = this.availableCells(true);
 
   if (cells.length) {
     return cells[Math.floor(Math.random() * cells.length)];
   }
 };
 
-Grid.prototype.availableCells = function () {
+Grid.prototype.availableCells = function (nolast) {
   var cells = [];
   var that = this;
   this.eachCell(function (x, y, tile) {
     if (!tile) {
-      if (x < that.size -1 || y < that.size - 1) {
+      if (!nolast || x < that.size -1 || y < that.size - 1) {
         cells.push({ x: x, y: y });
       }
     }
