@@ -44,10 +44,12 @@ Grid.prototype.randomAvailableCell = function () {
 
 Grid.prototype.availableCells = function () {
   var cells = [];
-
+  var that = this;
   this.eachCell(function (x, y, tile) {
     if (!tile) {
-      cells.push({ x: x, y: y });
+      if (x < that.size -1 || y < that.size - 1) {
+        cells.push({ x: x, y: y });
+      }
     }
   });
 

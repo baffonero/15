@@ -202,7 +202,7 @@ GameManager.prototype.isSolvable = function () {
       }  
     }
   }
-  
+
   if (totInv%2 === 0) {
     return (true);
   } else {
