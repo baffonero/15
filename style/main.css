@@ -589,6 +589,7 @@ hr {
 
 .sharing {
   margin-top: 20px;
+  font-size: 15px;
   text-align: center; }
   .sharing > iframe, .sharing > span, .sharing > form {
     display: inline-block;
